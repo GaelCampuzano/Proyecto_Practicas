@@ -1,43 +1,115 @@
-Kiosco de Propinas - Sunset Monalisa (Versión 1.0 - MVP)
-Descripción
+<!-- Banner del Proyecto -->
+
+<p align="center">
+<img src="https://www.google.com/search?q=https://placehold.co/1200x400/1a202c/f4b860%3Ftext%3DKiosco%2520de%2520Propinas%26font%3Droboto" alt="Banner del Kiosco de Propinas Sunset Monalisa">
+</p>
+
+<h1 align="center">Kiosco de Propinas - Sunset Monalisa</h1>
+
+<!-- Insignias (Badges) -->
+
+<p align="center">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Versi%25C3%25B3n-1.0%2520(MVP)-blue.svg" alt="Versión del Proyecto">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Node.js-16%252B-339933.svg%3Flogo%3Dnode.js" alt="Node.js">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Express-4.x-000000.svg%3Flogo%3Dexpress" alt="Express.js">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/SQLite-3-003B57.svg%3Flogo%3Dsqlite" alt="SQLite">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Licencia-MIT-yellow.svg" alt="Licencia MIT">
+</p>
+
+📝 Descripción
 Este proyecto es una aplicación web de tipo kiosco diseñada para que los clientes del restaurante Sunset Monalisa puedan dejar propina de forma digital y sencilla. La aplicación sigue un flujo simple: el mesero ingresa sus datos y el número de mesa, le entrega el dispositivo (iPad/tablet) al cliente, el cliente selecciona un porcentaje de propina, y la transacción se registra en una base de datos para su posterior consulta.
 
 Este proyecto fue desarrollado como un MVP (Producto Mínimo Viable) para validar la funcionalidad principal antes de una posible integración con sistemas de punto de venta.
 
 Responsable: David Peña (Gerente de implementaciones de sistemas)
+
 Ejecutor: Gael Campuzano (Practicante de desarrollo)
 
-Características Principales (MVP)
-Flujo de Kiosco: Interfaz optimizada para tablets con un flujo claro: Mesero -> Cliente -> Agradecimiento.
+✨ Características Principales
+📱 Flujo de Kiosco: Interfaz optimizada para tablets con un flujo claro: Mesero -> Cliente -> Agradecimiento.
 
-Selección de Propina: Botones grandes y claros para que el cliente seleccione entre 20%, 23% o 25%.
+👆 Selección de Propina: Botones grandes y claros para que el cliente seleccione entre 20%, 23% o 25%.
 
-API REST: Un backend robusto para crear y consultar los registros de propinas de forma segura.
+🌐 API REST: Un backend robusto para crear y consultar los registros de propinas de forma segura.
 
-Base de Datos Integrada: Utiliza SQLite para un almacenamiento de datos ligero y sin necesidad de un servidor de base de datos externo.
+🗃️ Base de Datos Integrada: Utiliza SQLite para un almacenamiento de datos ligero y sin servidor externo.
 
-Dashboard de Administración: Una interfaz web para consultar todos los registros, con funcionalidades de:
+📊 Dashboard de Administración: Una interfaz web para consultar todos los registros, con funcionalidades de:
 
-Filtrado por nombre de mesero.
-
-Filtrado por rango de fechas.
+Filtrado por nombre de mesero y rango de fechas.
 
 Cálculo de totales y promedio de propinas.
 
 Exportación de los datos filtrados a formato CSV.
 
-Autenticación Segura: El dashboard y la API de consulta están protegidos mediante Autenticación Básica.
+🔐 Autenticación Segura: El dashboard y la API de consulta están protegidos mediante Autenticación Básica.
 
-Tecnologías Utilizadas
-Frontend: HTML5, CSS3, JavaScript (ES6+)
+🚀 Tecnologías Utilizadas
+Categoría
 
-Backend: Node.js, Express.js
+Tecnología
 
-Base de Datos: SQLite3
+Frontend
 
-Dependencias Adicionales: cors, dotenv, sqlite, sqlite3
+HTML5, CSS3, JavaScript (ES6+)
 
-Estructura del Proyecto
+Backend
+
+Node.js, Express.js
+
+Base de Datos
+
+SQLite3
+
+Dependencias
+
+cors, dotenv, sqlite, sqlite3, nodemon
+
+⚙️ Instalación y Puesta en Marcha
+Sigue estos pasos para ejecutar el proyecto en un entorno de desarrollo local.
+
+Prerrequisitos
+Tener instalado Node.js (versión 16 o superior).
+
+Tener instalado npm (incluido con Node.js).
+
+Pasos
+Clonar el repositorio:
+
+git clone https://[URL-DEL-REPOSITORIO]/kiosco-sunset.git
+cd kiosco-sunset
+
+Instalar dependencias:
+Este comando instalará todas las librerías necesarias del package.json.
+
+npm install
+
+Configurar las variables de entorno:
+Crea una copia del archivo .env.example y renómbrala a .env.
+
+# En Windows (cmd): copy .env.example .env
+# En Linux/macOS: cp .env.example .env
+
+Abre el archivo .env y ajusta las variables si es necesario. Las credenciales por defecto son admin y sunset123.
+
+Iniciar el servidor de desarrollo:
+Este comando utiliza nodemon para que el servidor se reinicie automáticamente con cada cambio.
+
+npm run dev
+
+¡Listo! La aplicación estará corriendo en http://localhost:3000.
+
+🖥️ Uso de la Aplicación
+Kiosco de Propinas:
+➡️ http://localhost:3000
+
+Dashboard de Administración:
+➡️ http://localhost:3000/admin.html
+(Requiere las credenciales configuradas en el archivo .env)
+
+<details>
+<summary>📁 Ver la Estructura del Proyecto</summary>
+
 /
 ├── public/           # Archivos estáticos para el cliente (Kiosco y Admin)
 │   ├── index.html    # Interfaz del kiosco
@@ -53,62 +125,17 @@ Estructura del Proyecto
 ├── server.js         # Servidor principal (API y servicio de archivos estáticos)
 └── README.md         # Esta documentación
 
-Instalación y Puesta en Marcha
-Sigue estos pasos para ejecutar el proyecto en un entorno de desarrollo local.
+</details>
 
-Prerrequisitos
-Tener instalado Node.js (versión 16 o superior recomendada).
+<details>
+<summary>📡 Ver los Endpoints de la API</summary>
 
-Tener instalado npm (generalmente viene con Node.js).
-
-Pasos
-Clonar el repositorio (o descomprimir los archivos):
-
-# git clone https://[URL-DEL-REPOSITORIO]/kiosco-sunset.git
-cd kiosco-sunset
-
-Instalar dependencias:
-Este comando leerá el package.json e instalará todas las librerías necesarias (express, sqlite3, etc.).
-
-npm install
-
-Configurar las variables de entorno:
-Crea una copia del archivo .env.example y renómbrala a .env.
-
-# En Windows (cmd)
-copy .env.example .env
-# En Linux/macOS/Git Bash
-cp .env.example .env
-
-Abre el archivo .env y ajusta las variables si es necesario. Las credenciales por defecto son:
-
-ADMIN_USER=admin
-
-ADMIN_PASS=sunset123
-
-Iniciar el servidor:
-Este comando utiliza nodemon para iniciar el servidor. El servidor se reiniciará automáticamente cada vez que hagas un cambio en los archivos.
-
-npm run dev
-
-Si todo va bien, verás el siguiente mensaje en la consola:
-Servidor escuchando en http://localhost:3000
-
-Uso de la Aplicación
-Kiosco de Propinas:
-Abre tu navegador y ve a http://localhost:3000
-
-Dashboard de Administración:
-Abre tu navegador y ve a http://localhost:3000/admin.html
-
-Se te pedirán las credenciales de administrador que configuraste en el archivo .env.
-
-Endpoints de la API
 POST /api/tips
-
 Descripción: Crea un nuevo registro de propina.
 
-Cuerpo (Body) de la Petición (JSON):
+Protección: Abierto (Público).
+
+Cuerpo de la Petición (JSON):
 
 {
   "table_number": "12",
@@ -116,18 +143,20 @@ Cuerpo (Body) de la Petición (JSON):
   "tip_percentage": 20
 }
 
-Protección: Abierto (Público).
-
 GET /api/tips
-
-Descripción: Obtiene todos los registros de propinas. Acepta parámetros de consulta para filtrar.
-
-Parámetros de Consulta (Query Params):
-
-waiter (opcional): Filtra por el nombre del mesero (no distingue mayúsculas/minúsculas).
-
-startDate (opcional): Filtra registros creados desde esta fecha (formato YYYY-MM-DD).
-
-endDate (opcional): Filtra registros creados hasta esta fecha (formato YYYY-MM-DD).
+Descripción: Obtiene los registros de propinas. Acepta parámetros de consulta para filtrar.
 
 Protección: Autenticación Básica.
+
+Parámetros de Consulta (Opcionales):
+
+waiter: Filtra por nombre de mesero.
+
+startDate: Filtra desde una fecha de inicio (formato YYYY-MM-DD).
+
+endDate: Filtra hasta una fecha de fin (formato YYYY-MM-DD).
+
+</details>
+
+📄 Licencia
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
