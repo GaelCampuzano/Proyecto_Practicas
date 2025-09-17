@@ -143,7 +143,7 @@ p {
     color: var(--primary-color);
 }
 
-/* --- NUEVO: Estilos y Animación para la pantalla de agradecimiento --- */
+/* --- Estilos y Animación para la pantalla de agradecimiento --- */
 .success-animation {
     margin: 0 auto 20px auto;
 }

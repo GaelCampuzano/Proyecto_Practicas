@@ -29,7 +29,7 @@ Requisitos
 Instalación
 -----------
 1. Clonar el repositorio:
-   - `git clone https://[URL-DEL-REPOSITORIO]/kiosco-sunset.git`
+   - `git clone https://[https://github.com/GaelCampuzano/Proyecto_Practicas.git]/kiosco-sunset.git`
    - `cd kiosco-sunset`
 2. Instalar dependencias:
    - `npm install`
