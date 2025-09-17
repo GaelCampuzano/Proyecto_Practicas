@@ -89,7 +89,7 @@ app.get('/api/tips', auth, (req, res) => {
       }
       if (endDate) {
         query += ' AND created_at <= ?';
-        params.push(endDate + 'T23:59:59.999Z'); // Incluir todo el día final
+        params.push(endDate + '23:59:59.999Z'); // Incluir todo el día final
       }
       if (waiterName) {
         query += ' AND waiter_name LIKE ?';

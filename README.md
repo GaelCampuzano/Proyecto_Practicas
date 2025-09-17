@@ -1,162 +1,133 @@
-# Kiosco de Propinas - Sunset Monalisa
+Kiosco de Propinas - Sunset Monalisa (Versión 1.0 - MVP)
+Descripción
+Este proyecto es una aplicación web de tipo kiosco diseñada para que los clientes del restaurante Sunset Monalisa puedan dejar propina de forma digital y sencilla. La aplicación sigue un flujo simple: el mesero ingresa sus datos y el número de mesa, le entrega el dispositivo (iPad/tablet) al cliente, el cliente selecciona un porcentaje de propina, y la transacción se registra en una base de datos para su posterior consulta.
 
-Sistema de kiosco digital para la recolección de propinas en el restaurante Sunset Monalisa.
+Este proyecto fue desarrollado como un MVP (Producto Mínimo Viable) para validar la funcionalidad principal antes de una posible integración con sistemas de punto de venta.
 
-## Características Principales
+Responsable: David Peña (Gerente de implementaciones de sistemas)
+Ejecutor: Gael Campuzano (Practicante de desarrollo)
 
-- **Interfaz de Kiosco Intuitiva**: Sistema de 3 pantallas para el flujo completo de propinas
-- **Base de Datos SQLite**: Almacenamiento local y eficiente de registros
-- **API REST**: Endpoints para crear y consultar propinas
-- **Autenticación Básica**: Panel de administración protegido
-- **Responsive Design**: Optimizado para dispositivos táctiles
-- **Validación de Datos**: Control de porcentajes permitidos (20%, 23%, 25%)
+Características Principales (MVP)
+Flujo de Kiosco: Interfaz optimizada para tablets con un flujo claro: Mesero -> Cliente -> Agradecimiento.
 
-## Flujo de Usuario
+Selección de Propina: Botones grandes y claros para que el cliente seleccione entre 20%, 23% o 25%.
 
-1. **Pantalla del Mesero**: Ingreso de nombre y número de mesa
-2. **Pantalla del Cliente**: Selección de porcentaje de propina
-3. **Pantalla de Confirmación**: Animación de éxito y agradecimiento
+API REST: Un backend robusto para crear y consultar los registros de propinas de forma segura.
 
-## Tecnologías Utilizadas
+Base de Datos Integrada: Utiliza SQLite para un almacenamiento de datos ligero y sin necesidad de un servidor de base de datos externo.
 
-- **Backend**: Node.js + Express.js
-- **Base de Datos**: SQLite3 (better-sqlite3)
-- **Frontend**: HTML5, CSS3, JavaScript Vanilla
-- **Autenticación**: Basic Auth
-- **Estilos**: CSS Variables + Montserrat Font
+Dashboard de Administración: Una interfaz web para consultar todos los registros, con funcionalidades de:
 
-## Instalación
+Filtrado por nombre de mesero.
 
-```bash
-# Clonar el repositorio
-git clone <repository-url>
+Filtrado por rango de fechas.
+
+Cálculo de totales y promedio de propinas.
+
+Exportación de los datos filtrados a formato CSV.
+
+Autenticación Segura: El dashboard y la API de consulta están protegidos mediante Autenticación Básica.
+
+Tecnologías Utilizadas
+Frontend: HTML5, CSS3, JavaScript (ES6+)
+
+Backend: Node.js, Express.js
+
+Base de Datos: SQLite3
+
+Dependencias Adicionales: cors, dotenv, sqlite, sqlite3
+
+Estructura del Proyecto
+/
+├── public/           # Archivos estáticos para el cliente (Kiosco y Admin)
+│   ├── index.html    # Interfaz del kiosco
+│   ├── style.css     # Estilos del kiosco
+│   ├── app.js        # Lógica del kiosco
+│   ├── admin.html    # Interfaz del dashboard
+│   ├── admin.css     # Estilos del dashboard
+│   └── admin.js      # Lógica del dashboard
+├── data/             # Carpeta donde se crea la base de datos SQLite
+├── .env              # (No versionado) Archivo de variables de entorno
+├── .env.example      # Ejemplo de las variables de entorno requeridas
+├── package.json      # Dependencias y scripts del proyecto
+├── server.js         # Servidor principal (API y servicio de archivos estáticos)
+└── README.md         # Esta documentación
+
+Instalación y Puesta en Marcha
+Sigue estos pasos para ejecutar el proyecto en un entorno de desarrollo local.
+
+Prerrequisitos
+Tener instalado Node.js (versión 16 o superior recomendada).
+
+Tener instalado npm (generalmente viene con Node.js).
+
+Pasos
+Clonar el repositorio (o descomprimir los archivos):
+
+# git clone https://[URL-DEL-REPOSITORIO]/kiosco-sunset.git
 cd kiosco-sunset
 
-# Instalar dependencias
+Instalar dependencias:
+Este comando leerá el package.json e instalará todas las librerías necesarias (express, sqlite3, etc.).
+
 npm install
 
-# Configurar variables de entorno
+Configurar las variables de entorno:
+Crea una copia del archivo .env.example y renómbrala a .env.
+
+# En Windows (cmd)
+copy .env.example .env
+# En Linux/macOS/Git Bash
 cp .env.example .env
-# Editar .env con tus credenciales de administrador
 
-# Iniciar el servidor
-npm start
-```
+Abre el archivo .env y ajusta las variables si es necesario. Las credenciales por defecto son:
 
-## Configuración
-
-Crear archivo `.env` con las siguientes variables:
-
-```env
-PORT=3000
 ADMIN_USER=admin
-ADMIN_PASS=tu_password_seguro
-```
 
-## Uso
+ADMIN_PASS=sunset123
 
-### Kiosco Principal
-- Acceder a `http://localhost:3000`
-- Seguir el flujo de 3 pantallas
-- Las propinas se registran automáticamente
+Iniciar el servidor:
+Este comando utiliza nodemon para iniciar el servidor. El servidor se reiniciará automáticamente cada vez que hagas un cambio en los archivos.
 
-### Panel de Administración
-- Acceder a `http://localhost:3000/admin.html`
-- Usar credenciales configuradas en `.env`
-- Consultar y filtrar registros de propinas
+npm run dev
 
-## API Endpoints
+Si todo va bien, verás el siguiente mensaje en la consola:
+Servidor escuchando en http://localhost:3000
 
-### POST /api/tips
-Registra una nueva propina (público)
+Uso de la Aplicación
+Kiosco de Propinas:
+Abre tu navegador y ve a http://localhost:3000
 
-**Body:**
-```json
+Dashboard de Administración:
+Abre tu navegador y ve a http://localhost:3000/admin.html
+
+Se te pedirán las credenciales de administrador que configuraste en el archivo .env.
+
+Endpoints de la API
+POST /api/tips
+
+Descripción: Crea un nuevo registro de propina.
+
+Cuerpo (Body) de la Petición (JSON):
+
 {
-  "table_number": "5",
-  "waiter_name": "Gael Campuzano",
-  "tip_percentage": 23,
-  "device_id": "kiosk-1234567890"
+  "table_number": "12",
+  "waiter_name": "Gael",
+  "tip_percentage": 20
 }
-```
 
-### GET /api/tips
-Consulta propinas (requiere autenticación)
+Protección: Abierto (Público).
 
-**Query Parameters:**
-- `startDate`: Fecha de inicio (ISO format)
-- `endDate`: Fecha de fin (ISO format)
-- `waiterName`: Nombre del mesero (búsqueda parcial)
+GET /api/tips
 
-## Estructura de Base de Datos
+Descripción: Obtiene todos los registros de propinas. Acepta parámetros de consulta para filtrar.
 
-```sql
-CREATE TABLE tips (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  table_number TEXT NOT NULL,
-  waiter_name TEXT NOT NULL,
-  tip_percentage INTEGER NOT NULL,
-  user_agent TEXT,
-  device_id TEXT,
-  created_at TEXT NOT NULL
-);
-```
+Parámetros de Consulta (Query Params):
 
-## Personalización
+waiter (opcional): Filtra por el nombre del mesero (no distingue mayúsculas/minúsculas).
 
-### Colores
-Modificar las variables CSS en `public/style.css`:
-```css
-:root {
-  --primary-color: #ff8c00;    /* Color principal */
-  --secondary-color: #4a4a4a;  /* Color de texto */
-  --background-color: #f4f4f9; /* Color de fondo */
-}
-```
+startDate (opcional): Filtra registros creados desde esta fecha (formato YYYY-MM-DD).
 
-### Porcentajes de Propina
-Modificar en `server.js` línea 59:
-```javascript
-if (![20, 23, 25].includes(tip_percentage)) {
-}
-```
+endDate (opcional): Filtra registros creados hasta esta fecha (formato YYYY-MM-DD).
 
-## Scripts Disponibles
-
-- `npm start`: Inicia el servidor en producción
-- `npm run dev`: Inicia el servidor con auto-reload
-
-## Estructura del Proyecto
-
-```
-kiosco-sunset/
-├── data/
-│   └── tips.db              # Base de datos SQLite
-├── public/
-│   ├── index.html           # Interfaz principal del kiosco
-│   ├── app.js              # Lógica del frontend
-│   ├── style.css           # Estilos principales
-│   ├── admin.html          # Panel de administración
-│   ├── admin.js            # Lógica del panel admin
-│   └── admin.css           # Estilos del panel admin
-├── server.js               # Servidor Express y API
-├── package.json            # Dependencias y scripts
-└── README.md              # Documentación
-```
-
-## Consideraciones de Seguridad
-
-- Las credenciales de administrador deben ser seguras
-- El panel de administración está protegido con Basic Auth
-- Validación de datos en el servidor
-- Sanitización de inputs del usuario
-
-## Próximas Mejoras
-
-- [ ] Exportación de datos a Excel/CSV
-- [ ] Modo offline con sincronización
-- [ ] Multi-idioma
-
-## Autor
-
-**Gael Campuzano** - Desarrollo del sistema de kiosco para Sunset Monalisa
+Protección: Autenticación Básica.
