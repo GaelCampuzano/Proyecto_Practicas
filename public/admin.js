@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const tbody = document.getElementById('tips-tbody');
     const filterForm = document.getElementById('filter-form');
-    // ... otros selectores de filtros ...
+    // ... mas selectores de filtros ...
     const waiterFilterInput = document.getElementById('waiter-filter');
     const startDateInput = document.getElementById('start-date-filter');
     const endDateInput = document.getElementById('end-date-filter');
